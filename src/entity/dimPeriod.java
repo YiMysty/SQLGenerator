@@ -31,10 +31,10 @@ public class dimPeriod {
 			this.PartOfDay = "Evening";
 		}
 		else if (periodID>=6&&periodID<=12){
-			this.PartOfDay = "Afternoon";
+			this.PartOfDay = "Morning";
 		}
 		else if (periodID>=13&&periodID<=18){
-			this.PartOfDay = "Morning";
+			this.PartOfDay = "Afternoon";
 		}
 	}
 	
