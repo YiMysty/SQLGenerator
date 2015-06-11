@@ -15,6 +15,9 @@ public class SQLGenerator {
 			case "factRelatedness":
 				SQL = NormalGenerator(o);
 				break;
+			case "dimDateTime":
+				SQL = NormalGenerator(o);
+				break;
 			default:
 				System.out.println(o.getClass().getSimpleName());
 				System.out.println("No SQL generated!");
@@ -85,6 +88,7 @@ public class SQLGenerator {
 				break;
 			default:
 				System.out.println("Unknown type "+f.getType().getSimpleName());
+				Column = Column.substring(0, Column.lastIndexOf(","));
 				break;
 			}
 		}

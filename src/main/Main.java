@@ -3,7 +3,17 @@ import tools.SQLGenerator;
 import configReader.DataReader;
 import db.DBTools;
 import entity.dimTerm;
+
+import entity.dimDateTime;
+
+import entity.dimGeoLocation;
+
+import entity.dimPeriod;
+import entity.dimTerm;
+import entity.dimZone;
+
 import entity.factRelatedness;
+
 
 public class Main {
 	public static void main(String args[]){
@@ -16,6 +26,16 @@ public class Main {
 //		}
 //		for(dimPeriod z:reader.getPeriodData()){
 //			String SQL = SQLGenerator.getInsertQuery(z);
+
+//			System.out.println(SQL);
+//			db.execute(SQL);
+//		}
+		for(dimDateTime z:reader.getDateTimeData()){
+			String SQL = SQLGenerator.getInsertQuery(z);
+			System.out.println(SQL);
+			//db.execute(SQL);
+		}
+
 //			//System.out.println(SQL);
 //			//db.execute(SQL);
 //		}
@@ -32,5 +52,6 @@ public class Main {
 			String SQL = SQLGenerator.getInsertQuery(f);
 			db.execute(SQL);
 		}
+
 	}
 }
