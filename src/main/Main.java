@@ -11,6 +11,9 @@ import entity.dimPeriod;
 import entity.dimTerm;
 import entity.dimZone;
 
+import entity.factRelatedness;
+
+
 public class Main {
 	public static void main(String args[]){
 		DBTools db = new DBTools();
@@ -40,10 +43,17 @@ public class Main {
 //			System.out.println(SQL);
 //			db.execute(SQL);
 //		}
+
 	for(dimTerm d:reader.getDimeTermData()){
 		String SQL = SQLGenerator.getInsertQuery(d);
 		System.out.println(SQL);
 		db.execute(SQL);
 	}
+
+		for(factRelatedness f:reader.getFactRelatedness()){
+			String SQL = SQLGenerator.getInsertQuery(f);
+			System.out.println(SQL);
+		}
+
 	}
 }

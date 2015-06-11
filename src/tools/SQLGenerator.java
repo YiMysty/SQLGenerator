@@ -12,6 +12,7 @@ public class SQLGenerator {
 			case "dimPeriod":
 			case "dimGeoLocation":
 			case "dimTerm":
+			case "factRelatedness":
 				SQL = NormalGenerator(o);
 				break;
 			case "dimDateTime":
@@ -74,6 +75,13 @@ public class SQLGenerator {
 					Location l = (Location)f.get(o);
 					Values+=","+"geography::Point("+l.getLongtitude()+","+l.getLatitude()+",4326)";
 					Column = Column.substring(0, Column.lastIndexOf(","))+","+l.getName();
+				}catch (IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+				break;
+			case "float":
+				try{
+					Values+=","+f.getFloat(o);
 				}catch (IllegalArgumentException | IllegalAccessException e) {
 					e.printStackTrace();
 				}
