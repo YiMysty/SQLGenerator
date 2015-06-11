@@ -31,7 +31,7 @@ public class DBTools {
 		}
 		return result;
 	}
-	public int getOneRecord(String SQL){
+	public int fetchTermID(String SQL){
 		try {
 			Statement st = m_Connection.createStatement();
 			ResultSet rs = st.executeQuery(SQL);

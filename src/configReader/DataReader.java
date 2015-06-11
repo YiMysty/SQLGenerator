@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import db.DBTools;
 import type.Location;
 import entity.dimPeriod;
 import entity.dimGeoLocation;
@@ -132,7 +133,26 @@ public class DataReader {
 		ArrayList<factRelatedness> data = new ArrayList<factRelatedness>();
 		ConfigReader config = new ConfigReader();
 		String FileName = config.getConfigurationReader().getRelatedFileName();
-		//BufferedReader reader = new BufferedReader(new¡¡FileReader(FileName));
+		try {
+			String s = "";
+			DBTools db = new DBTools();
+			BufferedReader reader = new BufferedReader(new FileReader(FileName));
+			while((s=reader.readLine())!=null){
+				float related = Float.parseFloat(s.split(";")[2]);
+				String Name_1 =  TrimAndgetName(s.split(";")[0]);
+				String Name_2 =  TrimAndgetName(s.split(";")[1]);
+				int TermID_1 = db.fetchTermID("select TermID from dimTerm where Name='"+Name_1+"'");
+				System.out.println(TermID_1);
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		config.close();
 		return data;
 	}
