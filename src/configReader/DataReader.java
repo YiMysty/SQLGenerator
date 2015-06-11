@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import entity.dimPeriod;
+import entity.dimGeoLocation;
 import entity.dimZone;
 
 public class DataReader {
@@ -60,5 +61,8 @@ public class DataReader {
 		}
 		config.close();
 		return period;
+	public ArrayList<dimGeoLocation> getGeoLocationData(){
+		ArrayList<dimGeoLocation> data = new ArrayList<dimGeoLocation>();
+		return data;
 	}
 }
