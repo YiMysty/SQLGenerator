@@ -142,7 +142,13 @@ public class DataReader {
 				String Name_1 =  TrimAndgetName(s.split(";")[0]);
 				String Name_2 =  TrimAndgetName(s.split(";")[1]);
 				int TermID_1 = db.fetchTermID("select TermID from dimTerm where Name='"+Name_1+"'");
-				System.out.println(TermID_1);
+				
+				int TermID_2 = db.fetchTermID("select TermID from dimTerm where Name='"+Name_2+"'");
+				factRelatedness temp = new factRelatedness();
+				temp.setRelatednessR(related);
+				temp.setTerm1ID(TermID_1);
+				temp.setTerm2ID(TermID_2);
+				data.add(temp);
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
@@ -152,14 +158,13 @@ public class DataReader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		config.close();
 		return data;
 	}
 	String TrimAndgetName(String s){
 		if(s.indexOf("(")<0)
-			return s;
-		return s.substring(0, s.lastIndexOf("("));
+			return s.replace("'", "'");
+		return s.substring(0, s.lastIndexOf("(")).replace("'", "'");
 	}
 	
 }

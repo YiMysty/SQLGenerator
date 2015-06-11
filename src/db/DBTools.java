@@ -33,15 +33,16 @@ public class DBTools {
 	}
 	public int fetchTermID(String SQL){
 		try {
+			//System.out.println(SQL);
 			Statement st = m_Connection.createStatement();
 			ResultSet rs = st.executeQuery(SQL);
 			while(rs.next()){
-				int key = rs.getInt(0);
+				int key = rs.getInt(1);
 				return key;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return -1;
 	}
