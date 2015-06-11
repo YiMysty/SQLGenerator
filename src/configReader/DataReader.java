@@ -163,8 +163,8 @@ public class DataReader {
 	}
 	String TrimAndgetName(String s){
 		if(s.indexOf("(")<0)
-			return s.replace("'", "'");
-		return s.substring(0, s.lastIndexOf("(")).replace("'", "'");
+			return s.replace("'", "_");
+		return s.substring(0, s.lastIndexOf("(")).replace("'", "_");
 	}
 	
 }

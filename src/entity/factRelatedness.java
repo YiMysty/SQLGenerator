@@ -1,16 +1,9 @@
 package entity;
 
 public class factRelatedness {
-	int RelatenessID;
 	int Term1ID;
 	int Term2ID;
 	float RelatednessR;
-	public int getRelatenessID() {
-		return RelatenessID;
-	}
-	public void setRelatenessID(int relatenessID) {
-		RelatenessID = relatenessID;
-	}
 	public int getTerm1ID() {
 		return Term1ID;
 	}

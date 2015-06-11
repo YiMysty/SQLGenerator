@@ -2,6 +2,7 @@ package main;
 import tools.SQLGenerator;
 import configReader.DataReader;
 import db.DBTools;
+import entity.dimTerm;
 import entity.factRelatedness;
 
 public class Main {
@@ -23,9 +24,13 @@ public class Main {
 //			System.out.println(SQL);
 //			db.execute(SQL);
 //		}
+//		for(dimTerm d:reader.getDimeTermData()){
+//			String SQL = SQLGenerator.getInsertQuery(d);
+//			db.execute(SQL);
+//		}
 		for(factRelatedness f:reader.getFactRelatedness()){
 			String SQL = SQLGenerator.getInsertQuery(f);
-			System.out.println(SQL);
+			db.execute(SQL);
 		}
 	}
 }
