@@ -2,8 +2,8 @@ package main;
 import tools.SQLGenerator;
 import configReader.DataReader;
 import db.DBTools;
+import entity.dimGeoLocation;
 import entity.dimPeriod;
-import entity.dimZone;
 
 public class Main {
 	public static void main(String args[]){
@@ -16,8 +16,13 @@ public class Main {
 //		}
 		for(dimPeriod z:reader.getPeriodData()){
 			String SQL = SQLGenerator.getInsertQuery(z);
-			System.out.println(SQL);
+			//System.out.println(SQL);
 			//db.execute(SQL);
+		}
+		for(dimGeoLocation z:reader.getGeoLocationData()){
+			String SQL = SQLGenerator.getInsertQuery(z);
+			System.out.println(SQL);
+			db.execute(SQL);
 		}
 	}
 }

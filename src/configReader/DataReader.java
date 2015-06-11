@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import type.Location;
 import entity.dimPeriod;
 import entity.dimGeoLocation;
 import entity.dimZone;
@@ -61,8 +62,39 @@ public class DataReader {
 		}
 		config.close();
 		return period;
+	}
 	public ArrayList<dimGeoLocation> getGeoLocationData(){
 		ArrayList<dimGeoLocation> data = new ArrayList<dimGeoLocation>();
+		ConfigReader config = new ConfigReader();
+		String fileName = config.getConfigurationReader().getPOIDataFileName();
+		String s = "";
+		try {
+			BufferedReader  reader = new BufferedReader(new FileReader(fileName));
+			while((s=reader.readLine())!=null){
+				if(s.equals(""))
+					continue;
+				if(s.charAt(s.length()-1)<='9'&&s.charAt(s.length()-1)>='0'){
+					dimGeoLocation temp = new dimGeoLocation();
+					try{
+						Integer.parseInt(s.split(" ")[2]);
+					}catch(Exception e){
+						continue;
+					}
+					temp.setZoneID(8);
+					temp.setLocation(new Location(Float.parseFloat(s.split(" ")[0]),Float.parseFloat(s.split(" ")[1]),"L_Geography"));
+					data.add(temp);
+				}
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERR:"+s);
+			e.printStackTrace();
+		}
+		config.close();
 		return data;
 	}
 }
