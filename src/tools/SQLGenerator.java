@@ -11,6 +11,7 @@ public class SQLGenerator {
 			case "dimZone":
 			case "dimPeriod":
 			case "dimGeoLocation":
+			case "dimTerm":
 				SQL = NormalGenerator(o);
 				break;
 			default:

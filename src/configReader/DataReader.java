@@ -5,11 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import type.Location;
 import entity.dimPeriod;
 import entity.dimGeoLocation;
+import entity.dimTerm;
 import entity.dimZone;
+import entity.factRelatedness;
 
 public class DataReader {
 	public ArrayList<dimZone> getZoneData(){
@@ -97,4 +100,46 @@ public class DataReader {
 		config.close();
 		return data;
 	}
+	public ArrayList<dimTerm> getDimeTermData(){
+		ArrayList<dimTerm> data = new ArrayList<dimTerm>();
+		ConfigReader config = new ConfigReader();
+		String FileName = config.getConfigurationReader().getRelatedFileName();
+		HashSet<String> set = new HashSet<String>();
+		try {
+			String s = "";
+			BufferedReader reader = new BufferedReader(new FileReader(FileName));
+			while((s=reader.readLine())!=null){
+				set.add(TrimAndgetName(s.split(";")[0]));
+				set.add(TrimAndgetName(s.split(";")[1]));
+			}
+			reader.close();
+			for(String Content:set){
+				dimTerm temp = new dimTerm();
+				temp.setName(Content);
+				data.add(temp);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		config.close();
+		return data;
+	}
+	public ArrayList<factRelatedness> getFactRelatedness(){
+		ArrayList<factRelatedness> data = new ArrayList<factRelatedness>();
+		ConfigReader config = new ConfigReader();
+		String FileName = config.getConfigurationReader().getRelatedFileName();
+		BufferedReader reader = new BufferedReader(new¡¡FileReader(FileName));
+		config.close();
+		return data;
+	}
+	String TrimAndgetName(String s){
+		if(s.indexOf("(")<0)
+			return s;
+		return s.substring(0, s.lastIndexOf("("));
+	}
+	
 }

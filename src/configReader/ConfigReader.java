@@ -59,6 +59,9 @@ public class configurationReader{
 	public String getPOIDataFileName(){
 		return property.getProperty("poifile");
 	}
+	public String getRelatedFileName(){
+		return property.getProperty("relatedfile");
+	}
 }
 }
 
