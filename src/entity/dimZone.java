@@ -6,7 +6,7 @@ public class dimZone {
 	int ZoneID;
 	Geometry geo;
 	String city;
-	String state;
+	//String state;
 	String ZoneName;
 	public String getZoneName() {
 		return ZoneName;
@@ -32,15 +32,9 @@ public class dimZone {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
 	public dimZone(){
 		this.city = null;
-		this.state = null;
+	//	this.state = null;
 		this.ZoneID = -1;
 		this.ZoneName = null;
 		this.geo = null;

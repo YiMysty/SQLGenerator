@@ -60,7 +60,7 @@ public class SQLGenerator {
 		}
 		if(Column.length()>0){
 			Column = Column.substring(1);
-			Values.substring(1);
+			Values = Values.substring(1);
 			SQL = SQL + Column+") values("+Values+")";
 			return SQL;
 		}

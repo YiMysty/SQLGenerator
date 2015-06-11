@@ -21,7 +21,7 @@ public class DataReader {
 				temp.setZoneID(Integer.parseInt(s.split(",")[1]));
 				temp.setZoneName(s.split(",")[0]);
 				temp.setCity("Chicago");
-				temp.setState("IL");
+				//temp.setState("IL");
 				zone.add(temp);
 			}
 			reader.close();
