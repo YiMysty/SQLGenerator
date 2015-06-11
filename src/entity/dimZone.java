@@ -1,10 +1,9 @@
 package entity;
 
-import com.vividsolutions.jts.geom.Geometry;
 
 public class dimZone {
 	int ZoneID;
-	Geometry geo;
+//	Geometry geo;
 	String city;
 	String ZState;
 	public String getZState() {
@@ -26,12 +25,12 @@ public class dimZone {
 	public void setZoneID(int zoneID) {
 		ZoneID = zoneID;
 	}
-	public Geometry getGeo() {
-		return geo;
-	}
-	public void setGeo(Geometry geo) {
-		this.geo = geo;
-	}
+//	public Geometry getGeo() {
+//		return geo;
+//	}
+//	public void setGeo(Geometry geo) {
+//		this.geo = geo;
+//	}
 	public String getCity() {
 		return city;
 	}
@@ -43,6 +42,6 @@ public class dimZone {
 		this.ZState = null;
 		this.ZoneID = -1;
 		this.ZoneName = null;
-		this.geo = null;
+		//this.geo = null;
 	}
 }

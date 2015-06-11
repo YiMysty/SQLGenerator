@@ -3,15 +3,15 @@ package entity;
 import type.Location;
 
 public class dimGeoLocation {
-	int LocationID;
+	//int LocationID;
 	int ZoneID;
 	Location location;
-	public int getLocationID() {
-		return LocationID;
-	}
-	public void setLocationID(int locationID) {
-		LocationID = locationID;
-	}
+//	public int getLocationID() {
+//		return LocationID;
+//	}
+//	public void setLocationID(int locationID) {
+//		LocationID = locationID;
+//	}
 	public int getZoneID() {
 		return ZoneID;
 	}
@@ -24,6 +24,10 @@ public class dimGeoLocation {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	
+	public dimGeoLocation(){
+		//this.LocationID = -1;
+		this.ZoneID = -1;
+		this.location = null;
+	}
 	
 }

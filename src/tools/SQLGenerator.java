@@ -2,14 +2,16 @@ package tools;
 
 import java.lang.reflect.Field;
 
+import type.Location;
+
 public class SQLGenerator {
 	public static String getInsertQuery(Object o){
 		String SQL = "";
 		switch(o.getClass().getSimpleName()){
 			case "dimZone":
-				SQL = NormalGenerator(o);
-				break;
 			case "dimPeriod":
+			case "dimGeoLocation":
+			case "dimTerm":
 				SQL = NormalGenerator(o);
 				break;
 			case "dimDateTime":
@@ -64,6 +66,15 @@ public class SQLGenerator {
 					Values+=","+f.get(o);
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "Location":
+				try{
+					Location l = (Location)f.get(o);
+					Values+=","+"geography::Point("+l.getLongtitude()+","+l.getLatitude()+",4326)";
+					Column = Column.substring(0, Column.lastIndexOf(","))+","+l.getName();
+				}catch (IllegalArgumentException | IllegalAccessException e) {
 					e.printStackTrace();
 				}
 				break;

@@ -59,6 +59,12 @@ public class configurationReader{
 	public String getDateTimeDataFileName(){
 		return property.getProperty("dateTimefile");
 	}
+	public String getPOIDataFileName(){
+		return property.getProperty("poifile");
+	}
+	public String getRelatedFileName(){
+		return property.getProperty("relatedfile");
+	}
 }
 }
 

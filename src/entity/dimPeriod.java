@@ -1,7 +1,4 @@
 package entity;
-
-import com.vividsolutions.jts.geom.Geometry;
-
 public class dimPeriod {
 	int PeriodID;
 	int RushHour;

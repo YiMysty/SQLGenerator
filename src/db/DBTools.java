@@ -1,6 +1,7 @@
 package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -29,5 +30,19 @@ public class DBTools {
 			return false;
 		}
 		return result;
+	}
+	public int fetchTermID(String SQL){
+		try {
+			Statement st = m_Connection.createStatement();
+			ResultSet rs = st.executeQuery(SQL);
+			while(rs.next()){
+				int key = rs.getInt(0);
+				return key;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
 	}
 }
