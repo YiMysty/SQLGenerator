@@ -6,9 +6,12 @@ public class SQLGenerator {
 	public static String getInsertQuery(Object o){
 		String SQL = "";
 		switch(o.getClass().getSimpleName()){
-		case "dimZone":
-			SQL = NormalGenerator(o);
-			break;
+			case "dimZone":
+				SQL = NormalGenerator(o);
+				break;
+			case "dimPeriod":
+				SQL = NormalGenerator(o);
+				break;
 			default:
 				System.out.println(o.getClass().getSimpleName());
 				System.out.println("No SQL generated!");
@@ -48,6 +51,14 @@ public class SQLGenerator {
 			case "int":
 				try {
 					Values+=","+f.getInt(o);
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "Boolean":
+				try {
+					Values+=","+f.get(o);
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

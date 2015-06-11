@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import entity.dimPeriod;
 import entity.dimZone;
 
 public class DataReader {
@@ -34,5 +35,30 @@ public class DataReader {
 		}
 		config.close();
 		return zone;
+	}
+	public ArrayList<dimPeriod> getPeriodData(){
+		ArrayList<dimPeriod> period = new ArrayList<dimPeriod>();
+		ConfigReader config = new ConfigReader();
+		String fileName = config.getConfigurationReader().getPeriodDataFileName();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(fileName));
+			String s = "";
+			while((s=reader.readLine())!=null){
+				dimPeriod temp = new dimPeriod();
+				temp.setPeriodID(Integer.parseInt(s));
+				temp.setRushHour(Integer.parseInt(s));
+				temp.setPartOfDay(Integer.parseInt(s));
+				period.add(temp);
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		config.close();
+		return period;
 	}
 }

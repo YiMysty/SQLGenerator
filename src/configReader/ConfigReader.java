@@ -53,6 +53,9 @@ public class configurationReader{
 	public String getZoneDataFileName(){
 		return property.getProperty("zonefile");
 	}
+	public String getPeriodDataFileName(){
+		return property.getProperty("periodFile");
+	}
 }
 }
 
