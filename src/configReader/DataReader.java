@@ -132,7 +132,7 @@ public class DataReader {
 		ArrayList<factRelatedness> data = new ArrayList<factRelatedness>();
 		ConfigReader config = new ConfigReader();
 		String FileName = config.getConfigurationReader().getRelatedFileName();
-		BufferedReader reader = new BufferedReader(new¡¡FileReader(FileName));
+		//BufferedReader reader = new BufferedReader(new¡¡FileReader(FileName));
 		config.close();
 		return data;
 	}
