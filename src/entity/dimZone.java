@@ -6,7 +6,13 @@ public class dimZone {
 	int ZoneID;
 	Geometry geo;
 	String city;
-	//String state;
+	String ZState;
+	public String getZState() {
+		return ZState;
+	}
+	public void setZState(String zState) {
+		ZState = zState;
+	}
 	String ZoneName;
 	public String getZoneName() {
 		return ZoneName;
@@ -34,7 +40,7 @@ public class dimZone {
 	}
 	public dimZone(){
 		this.city = null;
-	//	this.state = null;
+		this.ZState = null;
 		this.ZoneID = -1;
 		this.ZoneName = null;
 		this.geo = null;
