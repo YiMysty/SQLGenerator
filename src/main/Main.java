@@ -2,6 +2,7 @@ package main;
 import tools.SQLGenerator;
 import configReader.DataReader;
 import db.DBTools;
+import entity.dimDateTime;
 import entity.dimPeriod;
 import entity.dimZone;
 
@@ -14,10 +15,15 @@ public class Main {
 //			System.out.println(SQL);
 //			//db.execute(SQL);
 //		}
-		for(dimPeriod z:reader.getPeriodData()){
+//		for(dimPeriod z:reader.getPeriodData()){
+//			String SQL = SQLGenerator.getInsertQuery(z);
+//			System.out.println(SQL);
+//			db.execute(SQL);
+//		}
+		for(dimDateTime z:reader.getDateTimeData()){
 			String SQL = SQLGenerator.getInsertQuery(z);
 			System.out.println(SQL);
-			//db.execute(SQL);
+			db.execute(SQL);
 		}
 	}
 }

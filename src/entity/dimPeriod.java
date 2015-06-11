@@ -4,7 +4,7 @@ import com.vividsolutions.jts.geom.Geometry;
 
 public class dimPeriod {
 	int PeriodID;
-	Boolean RushHour;
+	int RushHour;
 	String PartOfDay;
 	public int getPeriodID() {
 		return PeriodID;
@@ -12,15 +12,15 @@ public class dimPeriod {
 	public void setPeriodID(int periodID) {
 		PeriodID = periodID;
 	}
-	public Boolean getRushHour() {
+	public int getRushHour() {
 		return RushHour;
 	}
 	public void setRushHour(int periodID) {
 		if ((periodID>=7&&periodID<=9)||(periodID>=17&&periodID<=19)){
-			this.RushHour = true;
+			this.RushHour = 1;
 		}
 		else{
-			this.RushHour = false;
+			this.RushHour = 0;
 		}
 	}
 	public String getPartOfDay() {
@@ -40,7 +40,7 @@ public class dimPeriod {
 	
 	public dimPeriod(){
 		this.PeriodID = -1;
-		this.RushHour = null;
+		this.RushHour = -1;
 		this.PartOfDay = null;
 	}
 }

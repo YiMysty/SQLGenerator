@@ -56,6 +56,9 @@ public class configurationReader{
 	public String getPeriodDataFileName(){
 		return property.getProperty("periodFile");
 	}
+	public String getDateTimeDataFileName(){
+		return property.getProperty("dateTimefile");
+	}
 }
 }
 
